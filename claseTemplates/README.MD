@@ -26,6 +26,8 @@ Abrir terminal y escribir los siguientes comandos en orden:
 
 http://127.0.0.1:8000/app/courses/
 
+#Funcionalidades
+
 ## Se cuenta con 3 clases: Cursos, Profesores y alumnos. El panel de navegación cuenta con 6 botones:
 
 - Create Course: Solicita nombre y camada para poder crear un curso en la base de datos.
