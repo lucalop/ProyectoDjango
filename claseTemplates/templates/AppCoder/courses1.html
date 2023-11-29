@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+
+<p>
+  <a href="{% url 'CreateCourse' %}">Crear</a>
+</p>
+
+
+{% for course in object_list %}
+        <h2>{{course.name}}</h2>
+        <p class="lead mb-0">
+             numero de camada {{course.camada}}
+        </p>
+        <p>
+            <a href="{% url 'CourseDetail' course.id %}">Details</a>
+        </p>
+        <hr>
+        <p>
+          <a href="{% url 'CourseUpdate' course.id %}">Edit Course</a>
+        </p>
+        <p>
+          <a href="{% url 'CourseDelete' course.id %}">Delete Course</a>
+        </p>
+    {% endfor %}
+
+{% endblock %}
+

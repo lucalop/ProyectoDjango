@@ -12,10 +12,10 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Curso',
+            name='Course',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=40)),
+                ('name', models.CharField(max_length=40)),
                 ('camada', models.IntegerField(unique=True)),
             ],
         ),
@@ -23,17 +23,17 @@ class Migration(migrations.Migration):
             name='Entregable',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=30)),
+                ('name', models.CharField(max_length=30)),
                 ('fecha_de_entrega', models.DateField()),
                 ('entregado', models.BooleanField()),
             ],
         ),
         migrations.CreateModel(
-            name='Estudiantes',
+            name='Students',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=30)),
-                ('apellido', models.CharField(max_length=30)),
+                ('name', models.CharField(max_length=30)),
+                ('surname', models.CharField(max_length=30)),
                 ('email', models.EmailField(max_length=254)),
             ],
         ),
@@ -41,8 +41,8 @@ class Migration(migrations.Migration):
             name='Profesor',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=30)),
-                ('apellido', models.CharField(max_length=30)),
+                ('name', models.CharField(max_length=30)),
+                ('surname', models.CharField(max_length=30)),
                 ('email', models.EmailField(max_length=254)),
                 ('profesion', models.CharField(max_length=30)),
             ],

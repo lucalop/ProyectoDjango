@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+<div class="mydiv">
+    <form action="/app/buscar" method="GET">
+
+        {{form.as_p}}
+        
+
+        <input type="submit" value="Buscar" class="btn btn-primary">
+
+    </form>
+
+    
+
+    {%for course in courses %}
+    <h2>{{course.name}}</h2>
+        <p class="lead mb-0">   
+          <h6> El curso es {{course.name}} con numero de camada {{course.camada}}<h6/>
+        <p/>
+    {% endfor %}
+
+{% endblock %}
+
+</div>

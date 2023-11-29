@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+<div class="mydiv">
+    <form action="/app/searchProfessor" method="GET">
+
+        {{form.as_p}}
+
+        <input type="submit" value="Buscar" class="btn btn-primary">
+
+    </form>
+    {%for professor in professors %}
+    <h2>{{professor.surname}}, {{professor.name}}</h2>
+            <p class="lead mb-0"> 
+            <p/>
+        <h6> El mail del profesor {{professor.name}}, {{professor.surname}} es {{professor.email}}<h6/>
+    {% endfor %}
+{% endblock %}
+
+        </div>

@@ -16,10 +16,40 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from AppCoder.views import crear_curso, show_html
+from AppCoder.views import create_course, show_html, show_courses, create_course_form, busqueda_courses, show_students,create_student_form, create_student, search_student, show_professors, create_professor,create_professor_form, search_professor
 
 urlpatterns = [
-    path('agregar_curso/', crear_curso),
+    path('agregar_course/', create_course),
+    path('course/', create_course_form), #para agregar courses desde el form
+    path('buscar/', busqueda_courses),
     path('show/', show_html),
+    path('courses/',show_courses),
+    path('showStudents/', show_students),
+    path('createStudent/',create_student_form),
+    path('createStudent1/',create_student),
+    path('searchStudent/',search_student),
+    path('showProfessors/', show_professors),
+    path('createProfessor/',create_professor_form),
+    path('createProfessor/',create_professor),
+    path('searchProfessor/',search_professor),
     
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+""", CourseList, CourseDetail, CreateCourse, UpdateCourse, DeleteCourse
+    path('show/list/', CourseList.as_view(), name="CourseList"),
+    path('show/<int:pk>', CourseDetail.as_view(), name="CourseDetail"),
+    path('create/', CreateCourse.as_view(), name="CreateCourse"),
+    path('edit/<int:pk>', UpdateCourse.as_view(), name="CourseUpdate"),
+    path('delete/<int:pk>', DeleteCourse.as_view(), name="CourseDelete"),"""
