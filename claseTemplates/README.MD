@@ -22,11 +22,11 @@ Abrir terminal y escribir los siguientes comandos en orden:
 - python manage.py migrate
 - python manage.py runserver     
 
-#Para poder hacer uso de la app dirigirse a 
+Para poder hacer uso de la app dirigirse a 
 
 http://127.0.0.1:8000/app/courses/
 
-#Funcionalidades
+# Funcionalidades
 
 ## Se cuenta con 3 clases: Cursos, Profesores y alumnos. El panel de navegación cuenta con 6 botones:
 
