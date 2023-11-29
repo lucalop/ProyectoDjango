@@ -17,9 +17,10 @@ Instalar Django
 
 
 # Pasos para correr el proyecto
-1 - Abrir terminal y escribir el comandoo: python manage.py makemigrations
-2 - python manage.py migrate
-3 - python manage.py runserver     
+Abrir terminal y escribir los siguientes comandos en orden: 
+- python manage.py makemigrations
+- python manage.py migrate
+- python manage.py runserver     
 
 #Para poder hacer uso de la app dirigirse a 
 
