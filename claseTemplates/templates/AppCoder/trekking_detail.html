@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+<div class="container2">
+    <div class="content-section2">
+        <p class="lead mb-0">Trekking name: <b>{{trekking.name}}</b></p>
+        <p>City: {{trekking.city}}</p>
+        <p>content: {{trekking.content}}</p>
+        <p>Post date: {{trekking.date}}</p>
+
+        {% if user.is_authenticated %}
+
+            <form action="" method="post"> <!--{% url 'TrekkingComment' trekking_id=trekking.id %}-->
+                {% csrf_token %}
+                <input type="text" name="content">
+                <input type="hidden" name="trekking" value="{{trekking.id}}"  >
+                <input type="submit" value="Comment">
+            </form>
+            <p>
+                <a href="{% url 'TrekkingList' %}">Trekking list</a>
+            </p>
+
+    {% endif %}
+    </div>
+
+    <div class="image-section2">
+        <img src="{{trekking.avatar_trekking.url}}" alt="" style="height: 220px">
+    </div>
+</div>
+{% endblock %}

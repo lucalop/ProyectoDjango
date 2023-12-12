@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+<form action="" method ="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    {# este form as p es para dejarlo como parrafor, se puede dejar como tabla también#}
+    <input type="submit" value="Create Trekking" class="btn btn-primary">
+
+</form>
+{% endblock %}

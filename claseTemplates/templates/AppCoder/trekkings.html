@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+<div class="mydiv">
+  <form action="/app/search_trekking" method="GET">
+
+    {{form.as_p}}
+      
+    <input type="submit" value="Buscar" class="btn btn-primary">
+
+  </form>
+
+<p>
+  <a href="{% url 'CreateTrekking' %}">Create Trekking</a>
+</p>
+
+{% if object_list %}
+
+{% for trekking in object_list %}
+        <h2>{{trekking.title}}</h2>
+        <p class="lead mb-0">
+             numero de camada {{trekking.subtitle}}
+        </p>
+        <p>
+            <a href="{% url 'TrekkingDetail' trekking.id %}">Details</a>
+        </p>
+        <hr>
+
+    {% endfor %}
+{% else %}
+<p class="lead mb-0">No hay trekkings cargados hasta el momento</p>
+{% endif %}
+{% endblock %}
+
+</div>

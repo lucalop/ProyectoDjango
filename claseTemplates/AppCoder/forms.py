@@ -1,4 +1,5 @@
 from django import forms
+from AppCoder.models import Trekking , Comments
 
 class CourseForm(forms.Form):
     name = forms.CharField()
@@ -24,3 +25,18 @@ class ProfessorForm(forms.Form):
 
 class SearchProfessorForm(forms.Form):
     name = forms.CharField()
+
+#Desde acá lo nuevo
+
+class TrekkingForm(forms.ModelForm):
+
+    class Meta:
+        model = Trekking
+        fields = "__all__"
+
+class TrekkingComment(forms.Form):
+    model = Comments
+    fields = ("usuario", "trekking", "content")
+
+class searchTrekkingForm(forms.Form):
+    city = forms.CharField()
