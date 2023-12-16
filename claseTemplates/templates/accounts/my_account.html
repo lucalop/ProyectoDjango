@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+{% csrf_token %}
+    <p>Username: <b>{{object.get_username}}</b></p>
+<p>email: {{object.email}}</p>
+
+{% if object.avatar %}
+<img style="height: 60px" src="{{ object.avatar.imagen.url }}" alt="">
+{% else %}
+<p>No hay avatar disponible</p>
+{% endif %}
+
+<a class="btn btn-primary" href="{% url 'EditUser'%}">Edit user</a>
+<a class="btn btn-primary" href="{% url 'EditAvatar'%}">Edit Avatar</a>
+
+{% endblock %}

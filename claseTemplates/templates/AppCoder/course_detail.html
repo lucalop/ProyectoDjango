@@ -2,11 +2,25 @@
 
 {% block cambio %}
 
+{% csrf_token %}
     <p>El nombre del curso es: <b>{{course.name}}</b></p>
 <p>Camada: {{course.camada}}</p>
+
+<img src="{{trekking.imagen.url}}" alt "">
+
+    {% if user.is_authenticated %}
+
+<form action="" method="post">
+    <input type="text" name="content">
+    <input type="hidden" name="Trekking" value="{{carrera.id}}"  >
+    <input type="submit" value="Comment">
+    
+
+</form>
 <p>
     <a href="{% url 'CourseList' %}">Listar Cursos</a>
 </p>
+
 
 
 

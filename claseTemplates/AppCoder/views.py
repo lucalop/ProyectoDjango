@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
-from AppCoder.models import Course, Students, Profesor
+from AppCoder.models import Course, Students, Profesor, Comments, Trekking
 from django.http import HttpResponse
-from AppCoder.forms import CourseForm,BusquedaCourseForm, searchStudentForm, StudentForm,ProfessorForm, SearchProfessorForm
+from AppCoder.forms import CourseForm,BusquedaCourseForm, searchStudentForm, StudentForm,ProfessorForm, SearchProfessorForm, TrekkingComment, searchTrekkingForm
+from django.views.generic import ListView, DetailView, CreateView,UpdateView, DeleteView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django import forms
 
 
 # Create your views here.
@@ -35,7 +39,8 @@ def show_html(request):
     contexto = {"course": course, "name": "Lucas"}
     return render(request,'index.html',contexto)
 
-def show_courses(request):
+@login_required
+def show_courses(request ):
     courses = Course.objects.all()
     contexto = {
         "courses": courses,
@@ -146,29 +151,12 @@ def delete_course(request):
     curso.delete()
     return redirect ("/app/courses")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-"""
-from django.views.generic import ListView, DetailView, CreateView,UpdateView, DeleteView
-class CourseList(ListView):
+class CourseList(LoginRequiredMixin, ListView):
     model = Course
     template_name = "AppCoder/courses1.html"
 
 
-class CourseDetail(DetailView):
+class CourseDetail(LoginRequiredMixin, DetailView):
     model = Course
     template_name = "AppCoder/course_detail.html"
 
@@ -188,4 +176,56 @@ class DeleteCourse(DeleteView):
     model = Course
     success_url = "/app/show/list"
     template_name = "AppCoder/delete_course.html"
-"""
+
+#Desde acá lo nuevo
+
+class TrekkingList(LoginRequiredMixin, ListView):
+    model = Trekking
+    template_name = "AppCoder/trekkings.html"
+
+def comment(request):
+    if request.method == "POST":
+        # Crear course
+        comment = TrekkingComment(request.POST)
+        if comment.is_valid():
+            informacion = comment.cleaned_data
+            #como invoco el titulo, nombre, apellido?? title=informacion["title"], name=informacion["name"], surname=informacion["surname"],
+            trekking = Trekking.objects.get(id= informacion["trekking"])
+            save_comment = Comments( usuario = request.user, trekking = trekking, content = informacion["content"] )
+            
+            save_comment.save()
+            return redirect("/app/trekking/list/")
+
+    comments = TrekkingComment()
+    contexto = {
+        "form": comments
+    }
+    return render(request, "AppCoder/create_trekking.html", contexto)
+
+
+class CreateTrekking(CreateView):
+    model = Trekking
+    success_url = "/app/trekking/list/"
+    template_name = "AppCoder/create_Trekking.html" #Estro hay que cambiarlo
+    fields= "__all__"
+
+class TrekkingDetail(LoginRequiredMixin, DetailView):
+    model = Trekking
+    template_name = "AppCoder/trekking_detail.html"
+
+
+    
+def search_trekking(request):
+    city = request.GET["city"]
+    trekkings= Trekking.objects.filter(city__icontains=city)
+    contexto = {
+        "trekkings": trekkings,
+        "form": searchTrekkingForm(),
+        }
+    
+    return render(request,'AppCoder/trekings.html',contexto)
+
+
+class AboutMe(TemplateView):
+    template_name = "AppCoder/about_me.html"
+
