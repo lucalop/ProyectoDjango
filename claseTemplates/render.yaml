@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: django
+    env: python
+    buildCommand: python manage.py migrate && python manage.py collectstatic --noinput
+    startCommand: gunicorn trekking.wsgi

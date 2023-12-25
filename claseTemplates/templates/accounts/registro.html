@@ -5,8 +5,29 @@
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Registrarse">
-
+    <input type="submit" value="Send" class="btn btn-primary">
 </form>
+
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<style>
+    .error-message {
+        color: red;
+    }
+</style>
+
+{% if form.errors %}
+    <div class="error-message">
+        Por favor, corrige los errores antes de enviar el formulario.
+    </div>
+{% endif %}
 
 {% endblock %}

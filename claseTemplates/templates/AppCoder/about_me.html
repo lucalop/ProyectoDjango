@@ -3,15 +3,34 @@
 
 {% block cambio %}
 
-<div class="container4">
-    <div class="content-section4">
-        <p class="lead mb-0"><b>About me</b></p>
-        <p class="lead mb-0"><b>Lopez, Francisco Lucas</b></p>
-        <p>Hi! My name is Lucas and I live in Ushuaia, the southest city of the world. I am an industrial engineer and I am currently working at DXC as a scrum Master/Project manager</p>
-        <p>Since I really enjoy doing trekking in my city, I decided to create a blog about this</p>
+<section id="aboutMeSection" class="testimonials text-center bg-light">
+    <div class="container">
+        <h2 class="mb-5">About me...</h2>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                    <img class="img-fluid rounded-circle mb-3" src="{% static 'assets/img/foto.png'%}" alt="..." />
+                    <h5>Lopez, Francisco Lucas Nahuel</h5>
+                    <p class="font-weight-light mb-0">Hi! My name is Lucas.  </p>
+                    <p class="font-weight-light mb-0"> I am 32 years old and since I really enjoy doing trekking in my city, I decided to create a blog about this</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                    <img class="img-fluid rounded-circle mb-3" src="{% static 'assets/img/foto2.png' %}" alt="..." />
+                    <h5>Profession</h5>
+                    <p class="font-weight-light mb-0">I am an industrial engineer and I am currently working at DXC as a scrum Master/Project manager</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                    <img class="img-fluid rounded-circle mb-3" src="{% static 'assets/img/foto3.png' %}" alt="..." />
+                    <h5>Where I live</h5>
+                    <p class="font-weight-light mb-0">I live in Ushuaia, the southest city of the world.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="image-section2">
-        <img src="{% static 'Trekking/aboutme.png' %}" alt="" style="height: 220px">
-    </div>
-</div>
+</section>
+
 {% endblock %}

@@ -4,28 +4,45 @@
 
 <div class="container2">
     <div class="content-section2">
-        <p class="lead mb-0">Trekking name: <b>{{trekking.name}}</b></p>
-        <p>City: {{trekking.city}}</p>
-        <p>content: {{trekking.content}}</p>
-        <p>Post date: {{trekking.date}}</p>
+        <h2> {{trekking.title}}</h2>
+        <p><b>City:</b> {{trekking.city}}</p>
+        <p><b>Difficulty:</b> {{trekking.difficulty}}</p>
+        <p><b>Duration:</b> {{trekking.difficulty}}</p>
+        <p><b>Description:</b> {{trekking.content}}</p>
+        <p><b>Post date:</b> {{trekking.date}}</p>
 
         {% if user.is_authenticated %}
-
-            <form action="" method="post"> <!--{% url 'TrekkingComment' trekking_id=trekking.id %}-->
+            <form action="{% url 'TrekkingComment' %}" method="post"> 
                 {% csrf_token %}
                 <input type="text" name="content">
-                <input type="hidden" name="trekking" value="{{trekking.id}}"  >
-                <input type="submit" value="Comment">
+                <input type="hidden" name="trekking" value="{{trekking.id}}">
+                <input type="submit" class="btn btn-primary" value="Comment">
             </form>
             <p>
-                <a href="{% url 'TrekkingList' %}">Trekking list</a>
+                <br>
+                <a class="btn btn-primary" href="{% url 'TrekkingList'%}">Back</a>
+                {% if user.is_authenticated and user.is_staff %}
+                <a class="btn btn-primary" href="{% url 'EditTrekking' trekking.id %}">Edit image</a>
+                {% endif %}
+                
             </p>
 
-    {% endif %}
+        {% endif %}
     </div>
-
     <div class="image-section2">
-        <img src="{{trekking.avatar_trekking.url}}" alt="" style="height: 220px">
+    <img src="{{trekking.avatar_trekking.url}}" alt="" style="height: 400px">
     </div>
 </div>
+
+{% for comment in trekking.comments.all %}
+        <h2>{{comment.content}}</h2>
+        <p class="lead mb-0">
+             Commented by: {{comment.usuario.username}}
+        </p>
+        <p class="lead mb-0">
+            date:{{comment.creation_date}}
+        </p>
+        <hr>
+{% endfor %}
+
 {% endblock %}

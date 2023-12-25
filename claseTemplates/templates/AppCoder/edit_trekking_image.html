@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block cambio %}
+
+<h2>Edit Image for Trekking: {{ trekking.title }} <br></h2>
+
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    <br>
+    <input class="btn btn-primary" type="submit" value="Save Changes">
+</form>
+
+{% endblock %}

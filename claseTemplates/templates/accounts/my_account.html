@@ -3,14 +3,22 @@
 {% block cambio %}
 
 {% csrf_token %}
-    <p>Username: <b>{{object.get_username}}</b></p>
-<p>email: {{object.email}}</p>
+<p class="lead mb-0">Username: <b>{{object.username}}</b></p>
+<p class="lead mb-0">Last name: <b>{{object.last_name}}</b></p>
+<p class="lead mb-0">email: {{object.email}}</p>
 
-{% if object.avatar %}
-<img style="height: 60px" src="{{ object.avatar.imagen.url }}" alt="">
-{% else %}
-<p>No hay avatar disponible</p>
-{% endif %}
+<br>
+
+<div>
+    {% if object.avatar %}
+    <img style="height: 120px" src="{{ object.avatar.imagen.url }}" alt="">
+    {% else %}
+    <p>No hay avatar disponible</p>
+    {% endif %}
+
+</div>
+
+<br>
 
 <a class="btn btn-primary" href="{% url 'EditUser'%}">Edit user</a>
 <a class="btn btn-primary" href="{% url 'EditAvatar'%}">Edit Avatar</a>

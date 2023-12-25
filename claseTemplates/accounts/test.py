@@ -13,7 +13,6 @@ class AvatarTestCase(TestCase):
         Avatar.objects.create(
             user=user,
             imagen = "/media/avatares/asdasd.png"
-
         )
     
     def test_creacion_avatares (self):

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-172u+@jr0cgnqr9zex5ew)u(^2!9=fh@0%7aaruzn4pim8z5-)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["trekking-django.onrender.com"]
 
 
 # Application definition
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'claseTemplates.urls'

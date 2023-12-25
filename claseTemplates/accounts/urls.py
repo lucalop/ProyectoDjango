@@ -1,5 +1,5 @@
-from django.contrib import admin
-from django.urls import path, include
+
+from django.urls import path
 from accounts.views import login_request, register_request, edit_request, edit_avatar, MyAccount
 from django.contrib.auth.views import LogoutView
 
@@ -10,6 +10,5 @@ urlpatterns = [
     path('edit/',edit_request, name="EditUser"),
     path('avatar/',edit_avatar, name ="EditAvatar"),
     path('my_account/<int:pk>/', MyAccount.as_view(), name="MyAccount")
-
     
 ]

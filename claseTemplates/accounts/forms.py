@@ -8,7 +8,7 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "email")
+        fields = ("username", "email","last_name")
 
 class UserUpdateForm(UserChangeForm):
     email = forms.EmailField(required=False)
@@ -21,5 +21,6 @@ class AvatarUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Avatar
-        fields = "__all__"
+        #fields = "__all__"
+        fields = ("imagen",)
 

@@ -10938,6 +10938,12 @@ body.login-page {
   justify-content: center;
   height: 100vh;
   margin: 0;
+  background-image: url('../assets/img/caminante.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #f0f0f0;
+
+
 }
 .container1 {
   text-align: center;
@@ -10945,10 +10951,11 @@ body.login-page {
 
 /* Estilos para el cuadro de inicio de sesión */
 .login-box1 {
-  background-color: #4caf50; /* Color de fondo verde */
+  background-color: rgba(169, 169, 169, 0.5);; /* Color de fondo verde */
   border-radius: 10px; /* Bordes redondeados */
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+
 }
 
 /* Estilos para el formulario de inicio de sesión */
@@ -10959,7 +10966,7 @@ body.login-page {
 /* Estilo para el botón de enviar */
 .submit-button1 {
   background-color: white; /* Color de fondo blanco */
-  color: #4caf50; /* Color de texto verde */
+  color: #0d6efd; /* Color de texto verde */
   padding: 10px 15px; /* Relleno interno del botón */
   border: none; /* Sin borde */
   border-radius: 4px; /* Bordes redondeados */
@@ -10967,7 +10974,7 @@ body.login-page {
 }
 
 .submit-button:hover {
-  background-color: #e6e6e6; /* Cambia el color de fondo al pasar sobre el botón */
+  background-color: #0d6efd; /* Cambia el color de fondo al pasar sobre el botón */
 }
 
 /* Estilos para la estructura general */
@@ -10987,4 +10994,17 @@ body.login-page {
   width: 33.33%; /* 1/3 de la pantalla */
   padding: 20px;
   box-sizing: border-box;
+}
+
+.messages {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
 }

@@ -1,23 +1,22 @@
 
 <nav class="navbar navbar-light bg-light static-top">
-    <div class="container">
-        
+    <div class="container">      
         <a class="navbar-brand" href="/app/trekking/list">Trekkings</a>
-        <a class="navbar-brand" href="/app/about_me">About me</a>
+        
 
-
-
-<!--        <a class="navbar-brand" href="/app/showProfessors">Professors</a>
-        <a class="navbar-brand" href="/app/createProfessor">Create professor</a>
-        <a class="navbar-brand" href="/app/showStudents">Students</a>
-        <a class="navbar-brand" href="/app/createStudent">Create Students</a>* -->
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and user.is_staff %}
         <a class="navbar-brand" href="/app/create_trekking">Create Trekking</a>
+        {% endif %}
+        <a class="navbar-brand" href="/app/about_me">About me</a>
+        {% if user.is_authenticated %}
         <h5>User: {{ user.get_username }}</h5>
-        <img style="height: 60px" src="{{user.avatar.imagen.url}}" alt="">
+        {% if user.avatar and user.avatar.imagen %}
+            <img style="height: 60px" src="{{ user.avatar.imagen.url }}" alt="">
+            {% else %}
+                <p>No hay avatar disponible</p>
+            {% endif %}
         <a class="navbar-brand" href="{% url 'MyAccount' user.id %}" >My account</a>
         <a class="btn btn-primary" href="{% url 'logout'%}">Logout</a>
-
         {% else %}
 
         <a class="navbar-brand" href="/accounts/register">Sign Up</a>
