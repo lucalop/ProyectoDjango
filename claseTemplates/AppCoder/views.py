@@ -94,7 +94,7 @@ def edit_trekking_image(request, trekking_id):
             messages.success(request, 'Trekking image updated!')
             return redirect("TrekkingList")
         else:
-            messages.error(request, 'Error updating trekking image. Please correct the errors.')
+            messages.error(request, 'Error updating trekking image. Please correct the errors. ')
 
     else:
         form = UpdateTrekkingImage(instance=trekking)
